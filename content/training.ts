@@ -1,38 +1,53 @@
 // Problem solving, courses and life outside the editor.
 
+export const leetcode = {
+  profile: "https://leetcode.com/u/c3CgTUeJ4W/",
+  solved: 97,
+  easy: 21,
+  medium: 61,
+  hard: 15,
+  rating: 1460,
+  activeDays: 81,
+  maxStreak: 28,
+  asOf: "September 2026",
+} as const;
+
 export const dsa = {
   heading: "Depth over count.",
   body: [
-    "I don’t grind a hundred easy array problems to make a number go up. I spend the time where problems actually get hard — dynamic programming and graphs.",
-    "Most of my practice happens locally, in Java, in a folder per topic. LeetCode is where some of it shows up.",
+    `I’d rather spend an evening on one hard problem than on ten easy ones. On LeetCode, ${leetcode.medium + leetcode.hard} of my ${leetcode.solved} solves are Medium or Hard; 40 are dynamic programming.`,
+    "Most of my practice happens locally, in Java, one folder per topic — graphs, DP, heaps, tries. That’s where the other hundred-odd problems live.",
   ],
-  // TODO(chirag): keep these in sync with your real counts.
   stats: [
     { value: 200, suffix: "+", label: "problems solved across platforms" },
-    { value: 100, suffix: "", label: "on LeetCode" },
-    { value: 90, suffix: "", label: "of those on DP & graphs" },
+    {
+      value: leetcode.medium + leetcode.hard,
+      suffix: "",
+      label: `of ${leetcode.solved} LeetCode solves are Medium or Hard`,
+    },
+    { value: leetcode.rating, suffix: "", label: "LeetCode contest rating" },
   ],
-  leetcode: { total: 100, deep: 90 },
-  // Real problems from the local Java practice folders.
+  // Real problems: recent LeetCode accepts plus the local Java practice folders.
   lanes: [
     [
-      "0/1 Knapsack",
+      "Burst Balloons",
       "Edit Distance",
+      "Minimum Cost to Cut a Stick",
+      "Partition Array for Maximum Sum",
       "Matrix-Chain Multiplication",
       "Longest Increasing Subsequence",
       "Longest Common Subsequence",
-      "Longest Common Substring",
+      "0/1 Knapsack",
       "Rod Cutting",
       "Catalan Numbers",
-      "Target Sum Subset",
       "Longest Path in a Matrix",
-      "Stacking Boxes",
-      "Jump Game",
+      "Target Sum Subset",
     ],
     [
       "Kosaraju’s SCC",
       "Tarjan’s Algorithm",
       "Disjoint Set Union",
+      "Topological Sort",
       "Alien Dictionary",
       "Prim’s MST",
       "Connecting Cities",
@@ -40,11 +55,9 @@ export const dsa = {
       "Tries",
       "Segment Trees",
       "Sliding Window Maximum",
-      "Connect N Ropes",
       "K Weakest Rows",
     ],
   ],
-  topics: ["Dynamic programming", "Graphs", "Trees", "Heaps", "Tries", "Segment trees", "Backtracking", "Recursion"],
 } as const;
 
 export const courses = [
@@ -72,9 +85,7 @@ export const life = {
   heading: "Off the clock.",
   swim: {
     title: "Swimmer first.",
-    // TODO(chirag): the second sentence is a draft — make it yours.
-    body: "I swam competitively at district level. Racing is where I learned that results are just training, added up.",
-    // TODO(chirag): add years / district name if you want them shown.
+    body: "I swam competitively in district tournaments and came home with silver in the 100 m freestyle and the 50 m backstroke. Swimming taught me what I still believe: race day only shows the training you’ve already done.",
     results: [
       { event: "100 m Freestyle", medal: "Silver", level: "District" },
       { event: "50 m Backstroke", medal: "Silver", level: "District" },
@@ -82,7 +93,7 @@ export const life = {
   },
   gym: { title: "Gym, every day.", body: "An hour and a half, seven days a week, around a full college schedule." },
   badminton: { title: "Badminton on weekends.", body: "Any sport, really — as long as someone’s keeping score." },
-  music: { title: "Music, always.", body: "I love music, and I love to sing." },
+  music: { title: "Music, always.", body: "I love music, and I sing whenever I get the chance." },
   reading: {
     title: "Reading.",
     body: "Self-improvement books, mostly. They all end up saying the same thing: discipline compounds.",

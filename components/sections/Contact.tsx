@@ -32,7 +32,11 @@ export default function Contact() {
               <a
                 key={l.label}
                 href={l.href}
-                {...(l.href.startsWith("http") ? { target: "_blank", rel: "noopener me" } : {})}
+                {...(l.href.startsWith("http")
+                  ? { target: "_blank", rel: "noopener me" }
+                  : l.href.endsWith(".pdf")
+                    ? { target: "_blank", rel: "noopener" }
+                    : {})}
               >
                 {l.label}
                 <Arrow dir="ne" />

@@ -380,9 +380,18 @@ html.lenis body {
 .menu {
   display: none;
 }
-@media (max-width: 860px) {
-  .head-nav,
+.brand,
+.head-nav a,
+.btn {
+  white-space: nowrap;
+}
+@media (max-width: 1100px) {
   .head-dist {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .head-nav {
     display: none;
   }
   .menu {
@@ -2256,50 +2265,6 @@ html.lenis body {
   }
 }
 
-.viz-funnel {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: center;
-  height: 100%;
-  padding-inline: 14px;
-  gap: 10px;
-}
-.viz-funnel .f {
-  display: grid;
-  gap: 6px;
-}
-.viz-funnel .bar {
-  height: 10px;
-  border-radius: 2px;
-  background: var(--ink);
-  transform-origin: left;
-}
-.viz-funnel .f:nth-child(2) .bar {
-  width: 42%;
-  background: var(--muted);
-}
-.viz-funnel .f:nth-child(3) .bar {
-  width: 12%;
-  background: var(--accent);
-}
-.viz-funnel span {
-  color: var(--muted);
-  font-size: 0.58rem;
-}
-.motion .viz-funnel .bar {
-  transform: scaleX(0);
-  transition: transform 1.1s var(--ease-out);
-}
-.in-view .viz-funnel .bar {
-  transform: none;
-}
-.in-view .viz-funnel .f:nth-child(2) .bar {
-  transition-delay: 0.25s;
-}
-.in-view .viz-funnel .f:nth-child(3) .bar {
-  transition-delay: 0.5s;
-}
-
 .reel-hint {
   display: none;
   color: var(--muted);
@@ -2394,11 +2359,14 @@ html.lenis body {
   border-radius: 1px;
   background: var(--line);
 }
-.ticks i.deep {
+.ticks i.hard {
   background: var(--accent);
 }
-.ticks i.rest {
+.ticks i.medium {
   background: var(--ink);
+}
+.ticks i.easy {
+  background: var(--line-strong);
 }
 @media (max-width: 600px) {
   .ticks {
@@ -2423,8 +2391,19 @@ html.lenis body {
   vertical-align: -1px;
   background: var(--accent);
 }
-.ticks-legend span.rest::before {
+.ticks-legend span.medium::before {
   background: var(--ink);
+}
+.ticks-legend span.easy::before {
+  background: var(--line-strong);
+}
+.ticks-legend a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin-top: 6px;
+  color: var(--ink);
 }
 
 .marquees {

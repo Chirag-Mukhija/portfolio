@@ -1,0 +1,159 @@
+<!doctype html>
+<!--
+  Résumé source. Render with `pnpm resume`:
+    public/Chirag-Mukhija-Resume.pdf          → linked from the website (no phone number)
+    private/Chirag-Mukhija-Resume-full.pdf    → for applications (with phone number, git-ignored)
+  ATS rules followed here: one column, standard section names, real text (no icons or images),
+  visible URLs, no tables, no header/footer regions.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Chirag Mukhija — Résumé (Backend &amp; Systems Engineer)</title>
+<meta name="author" content="Chirag Mukhija" />
+<meta name="description" content="Résumé of Chirag Mukhija, backend and systems engineer, B.E. Computer Science at BMS College of Engineering, Bengaluru." />
+<meta name="keywords" content="Chirag Mukhija, backend engineer, Node.js, PostgreSQL, Redis, distributed systems, BMSCE" />
+<style>
+  @page { size: A4; margin: 10mm 12mm 9mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.33;
+    color: #111a22;
+  }
+  a { color: inherit; text-decoration: none; }
+  h1 { font-size: 20pt; letter-spacing: 0.02em; font-weight: 700; line-height: 1.05; }
+  .title { margin-top: 3pt; font-size: 10pt; color: #26445a; font-weight: 500; }
+  .contact { margin-top: 3pt; font-size: 8.6pt; color: #26445a; }
+  .contact + .contact { margin-top: 1pt; }
+  .contact span + span::before { content: "  |  "; color: #9fb4bf; white-space: pre; }
+  .phone { display: inline; }
+  h2 {
+    margin: 8pt 0 3.5pt;
+    padding-bottom: 2pt;
+    border-bottom: 0.8pt solid #0b2233;
+    font-size: 9.6pt;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #0b2233;
+  }
+  .summary { color: #1d2e3a; }
+  .row { display: flex; justify-content: space-between; gap: 12pt; align-items: baseline; }
+  .row .when { white-space: nowrap; color: #26445a; }
+  .edu-sub { color: #26445a; }
+  .skills p { margin-top: 1.2pt; }
+  .skills b, .ach b { font-weight: 700; }
+  .proj { margin-top: 4.5pt; break-inside: avoid; }
+  .head p:first-child { min-width: 0; }
+  .head .link { white-space: nowrap; flex: none; }
+  .proj:first-of-type { margin-top: 0; }
+  .proj .head b { font-size: 9.8pt; }
+  .proj .tech { color: #3b5566; font-style: italic; }
+  .proj .link { color: #3b5566; font-size: 8.5pt; }
+  ul { margin: 1.5pt 0 0 11pt; }
+  li { margin-top: 0.9pt; padding-left: 1pt; }
+  li::marker { color: #c4381b; }
+  .ach li { margin-top: 1.4pt; }
+</style>
+</head>
+<body>
+  <h1>CHIRAG MUKHIJA</h1>
+  <p class="title">Backend &amp; Systems Engineer · B.E. Computer Science, BMS College of Engineering, Bengaluru</p>
+  <p class="contact">
+    <span>chiragmukhija.cs24@bmsce.ac.in</span><span class="phone">+91 90346 76426</span><span>Bengaluru, India</span><span><a href="https://chiragmukhija.vercel.app">chiragmukhija.vercel.app</a></span>
+  </p>
+  <p class="contact">
+    <span><a href="https://github.com/Chirag-Mukhija">github.com/Chirag-Mukhija</a></span><span><a href="https://www.linkedin.com/in/chirag-mukhija/">linkedin.com/in/chirag-mukhija</a></span><span><a href="https://leetcode.com/u/c3CgTUeJ4W/">leetcode.com/u/c3CgTUeJ4W</a></span>
+  </p>
+
+  <h2>Summary</h2>
+  <p class="summary">
+    Backend-focused CS undergraduate (CGPA 9.2) who builds production-style systems from scratch — a distributed job
+    scheduler, an Instagram-style backend and a payment API — with Node.js, PostgreSQL, Redis and Docker.
+  </p>
+
+  <h2>Education</h2>
+  <div class="row">
+    <p><b>B.M.S. College of Engineering, Bengaluru</b> — B.E. in Computer Science and Engineering</p>
+    <p class="when">2024 – 2028</p>
+  </div>
+  <p class="edu-sub">CGPA: 9.2 / 10 · Coursework: Data Structures, Analysis of Algorithms, Operating Systems, OOP</p>
+
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <p><b>Languages:</b> Java, JavaScript, TypeScript, SQL, C</p>
+    <p><b>Backend:</b> Node.js, Express.js, REST APIs, WebSockets, Hono</p>
+    <p><b>Databases &amp; Caching:</b> PostgreSQL, Redis (sorted sets, Pub/Sub), MongoDB, SQLite</p>
+    <p><b>Infrastructure &amp; Frontend:</b> Docker, Docker Compose, Nginx, AWS S3, Git · React, Next.js, Tailwind CSS</p>
+    <p><b>Concepts:</b> System design, job queues, idempotency, ACID transactions, feed fan-out, keyset pagination, rate limiting, DSA</p>
+  </div>
+
+  <h2>Projects</h2>
+
+  <div class="proj">
+    <div class="row head">
+      <p><b>Distributed Job Scheduler</b> <span class="tech">— Node.js, PostgreSQL, Redis, WebSockets, Docker</span></p>
+      <p class="link"><a href="https://github.com/Chirag-Mukhija/Job-Scheduler">github.com/Chirag-Mukhija/Job-Scheduler</a></p>
+    </div>
+    <ul>
+      <li>Built a task queue from scratch (the model behind BullMQ and Celery) with an API service and worker processes that scale horizontally via <i>docker compose --scale worker=N</i>.</li>
+      <li>Indexed due jobs in per-priority Redis sorted sets and claimed them with a guarded PostgreSQL UPDATE, removing full-table scans while ensuring no two workers run the same job.</li>
+      <li>Added exponential-backoff retries, a dead-letter queue with manual requeue, priorities, delayed jobs, a live WebSocket dashboard over Redis Pub/Sub, and graceful SIGTERM shutdown that finishes in-flight jobs.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row head">
+      <p><b>Instagram-Style Backend</b> <span class="tech">— Node.js, PostgreSQL, Redis, S3, Nginx</span></p>
+      <p class="link"><a href="https://github.com/Chirag-Mukhija/InstaBackend">github.com/Chirag-Mukhija/InstaBackend</a></p>
+    </div>
+    <ul>
+      <li>Implemented fan-out-on-write and fan-out-on-read feeds side by side to compare write amplification against read-time joins.</li>
+      <li>Keyset pagination on all list endpoints and S3 presigned uploads: flat page cost at any depth, no image bytes on the server.</li>
+      <li>Built JWT auth with Redis-backed revocable sessions and two-layer rate limiting (Nginx per-IP + Redis).</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row head">
+      <p><b>Payment Gateway API</b> <span class="tech">— Node.js, Express 5, PostgreSQL (in progress)</span></p>
+      <p class="link"><a href="https://github.com/Chirag-Mukhija/PaytmentGateway">github.com/Chirag-Mukhija/PaytmentGateway</a></p>
+    </div>
+    <ul>
+      <li>Made payment creation idempotent with per-merchant idempotency keys; a unique-constraint backstop turns concurrent duplicates into a clean 409, not a double charge.</li>
+      <li>One ACID transaction writes each payment with its first audit event; an append-only event log supports reconciliation, and amounts use DECIMAL to avoid floating-point drift.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row head">
+      <p><b>ClipForge — Short-Video Pipeline</b> <span class="tech">— TypeScript, SQLite, Remotion, ffmpeg, LLMs</span></p>
+      <p class="link"><a href="https://github.com/Chirag-Mukhija/ShortsPipeline">github.com/Chirag-Mukhija/ShortsPipeline</a></p>
+    </div>
+    <ul>
+      <li>Turns a topic into a finished 1080×1920 explainer in about 5 minutes via a 10-step pipeline; each step is a durable SQLite job with retries and crash recovery.</li>
+      <li>The LLM fills props for hand-built Remotion templates instead of writing animation code, so renders never break.</li>
+    </ul>
+  </div>
+
+  <div class="proj">
+    <div class="row head">
+      <p><b>PRactice — Open-Source Practice Platform</b> <span class="tech">— Next.js, FastAPI, GitHub API (team of 4)</span></p>
+      <p class="link"><a href="https://github.com/sciboyrocks/PRactice">github.com/sciboyrocks/PRactice</a></p>
+    </div>
+    <ul>
+      <li>Built the Issue → PR → Diff → File mapping that hands the LLM only the file a fix touched, not the whole repository.</li>
+    </ul>
+  </div>
+
+  <h2>Achievements &amp; Activities</h2>
+  <ul class="ach">
+    <li><b>Problem solving:</b> 200+ DSA problems across platforms; on LeetCode, 97 solved (61 Medium, 15 Hard), contest rating 1,460, 50 Days Badge 2026.</li>
+    <li><b>Hackathons:</b> built Signal, a voice-to-tasks assistant (React Native, Express, Whisper, Gemini), at an AWS hackathon; competed in multiple college hackathons.</li>
+    <li><b>Courses:</b> Fundamentals of Networking for Effective Backends (Hussein Nasser, Udemy); Sigma Full-Stack + DSA (Apna College); Fundamentals of Backend Engineering (in progress).</li>
+    <li><b>Sports:</b> district-level silver medallist in swimming (100 m freestyle, 50 m backstroke); trains in the gym daily.</li>
+  </ul>
+</body>
+</html>

@@ -30,20 +30,20 @@ pnpm start        # serve out/ locally
 | Design tokens + all styles | `app/globals.css` |
 | Metadata, fonts, JSON-LD | `app/layout.tsx`, `lib/jsonld.ts` |
 
-All copy is in `content/`. Search for `TODO(chirag)` to find the things only you can fill in.
+All copy is in `content/`; LeetCode numbers live in one object (`leetcode` in `content/training.ts`).
 
-### Before you publish
+### Assets and the résumé
 
-1. **Portrait** — save a photo as `assets/portrait-src.jpg`, run `pnpm images`, then set
-   `portrait: "/portrait"` in `content/site.ts`.
-2. **Résumé** — put the updated PDF at `public/resume.pdf` and set `resume: "/resume.pdf"`.
-3. **LeetCode** — set `links.leetcode` to your profile URL (it also goes into the JSON-LD `sameAs`).
-4. **Wanderlust** — the repo linked on the old résumé is private or gone; add a public link or leave it unlinked.
-5. Read every drafted line in `content/` (the three "rules", the swimming line) and make it sound like you.
+| Command | What it does |
+| --- | --- |
+| `pnpm images` | `private/portrait-src.jpg` → `public/portrait.{avif,webp,jpg}` (4:5 crop, **all EXIF/GPS stripped**) and `app/apple-icon.png` |
+| `pnpm resume` | `resume/resume.html` → `public/Chirag-Mukhija-Resume.pdf` (linked on the site, no phone number) and `private/Chirag-Mukhija-Resume-full.pdf` (with phone, for applications) |
+| `pnpm og` | `scripts/og.html` → `public/og.jpg`, the 1200×630 social preview |
 
-### Social preview image
+`private/` is git-ignored on purpose: the original photo carries GPS coordinates and the full résumé has
+your phone number. Keep originals there, never in `public/` or the repo root.
 
-`public/og.png` is rendered from `scripts/og.html` with headless Chrome: edit the HTML, then `pnpm og`.
+To update the résumé: edit `resume/resume.html`, run `pnpm resume`, check it is still one page, commit.
 
 ## How the motion works
 
@@ -67,15 +67,15 @@ Graph and JSON-LD all read from it.
 
 ## Getting found on Google
 
-Several other people share the name, so the off-page steps matter as much as the on-page SEO:
+Several other people share the name, so the off-page steps matter as much as the on-page SEO.
 
-1. **Google Search Console** → *Add property* → URL prefix → your site URL → verify with the *HTML tag*
-   method: copy the `content="…"` value into the Vercel env var `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`,
-   redeploy, click Verify.
-2. In Search Console: *Sitemaps* → submit `sitemap.xml`; *URL inspection* → your URL → *Request indexing*.
-3. **Bing Webmaster Tools** → import the site from Search Console (covers Bing, DuckDuckGo, Yahoo).
-4. Link the site from everywhere that already ranks for your name:
-   GitHub profile *Website* field and each pinned repo's *About → Website*; LinkedIn *Contact info → Website*
-   and a *Featured* link; your LeetCode profile.
-
-Expect a few days to a couple of weeks before the page shows up for a name search.
+1. **Search Console** → *Add property* → URL prefix → *HTML tag*: put the `content="…"` value in the Vercel env var
+   `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, redeploy, click *Verify*. Then submit `sitemap.xml` and use
+   *URL inspection → Request indexing* for the home page and the résumé PDF.
+2. **Bing Webmaster Tools** → import from Search Console (covers Bing, DuckDuckGo, Yahoo).
+3. **One identity everywhere** — same name, same photo, same one-line title, all linking to the site:
+   GitHub (profile *Website*, a profile README, *About → Website* on the flagship repos), LinkedIn
+   (*Contact info → Website*, *Featured*), LeetCode (display name “Chirag Mukhija”, website field).
+4. **Tell people** — a LinkedIn post about the site brings the first visits and links.
+5. **Watch** Search Console → *Performance* for the query “chirag mukhija”. Expect days to two weeks.
+6. **Keep it fresh** — update `site.updated`, the LeetCode object and the résumé when things change.

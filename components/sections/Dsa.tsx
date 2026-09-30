@@ -1,6 +1,6 @@
 import { laps } from "@/content/site";
-import { dsa } from "@/content/training";
-import { SectionHead } from "../ui";
+import { dsa, leetcode } from "@/content/training";
+import { Arrow, SectionHead } from "../ui";
 
 function Marquee({ items, reverse = false }: { items: readonly string[]; reverse?: boolean }) {
   return (
@@ -20,7 +20,12 @@ function Marquee({ items, reverse = false }: { items: readonly string[]; reverse
 }
 
 export default function Dsa() {
-  const { total, deep } = dsa.leetcode;
+  const { solved, easy, medium, hard } = leetcode;
+  const cells = [
+    ...Array<string>(hard).fill("hard"),
+    ...Array<string>(medium).fill("medium"),
+    ...Array<string>(easy).fill("easy"),
+  ];
   return (
     <section id="dsa" className="section lane" aria-labelledby="dsa-title">
       <div className="wrap">
@@ -41,7 +46,7 @@ export default function Dsa() {
           {dsa.stats.map((s) => (
             <div key={s.label} data-reveal>
               <p className="v">
-                <span data-count={s.value}>{s.value}</span>
+                <span data-count={s.value}>{s.value.toLocaleString("en-IN")}</span>
                 {s.suffix ? <span className="accent">{s.suffix}</span> : null}
               </p>
               <p className="l mono">{s.label}</p>
@@ -51,17 +56,21 @@ export default function Dsa() {
 
         <div className="ticks-wrap">
           <div className="ticks-legend mono" data-reveal>
-            <span>{deep} on DP &amp; graphs</span>
-            <span className="rest">{total - deep} everything else</span>
+            <span className="hard">{hard} Hard</span>
+            <span className="medium">{medium} Medium</span>
+            <span className="easy">{easy} Easy</span>
+            <a className="link-u" href={leetcode.profile} target="_blank" rel="noopener me">
+              LeetCode profile <Arrow dir="ne" />
+            </a>
           </div>
           <div
             className="ticks"
             role="img"
-            aria-label={`Of ${total} LeetCode problems, about ${deep} are dynamic programming and graphs.`}
+            aria-label={`${solved} LeetCode problems solved: ${hard} Hard, ${medium} Medium, ${easy} Easy.`}
             data-ticks
           >
-            {Array.from({ length: total }, (_, i) => (
-              <i key={i} className={i < deep ? "deep" : "rest"} />
+            {cells.map((level, i) => (
+              <i key={i} className={level} />
             ))}
           </div>
         </div>

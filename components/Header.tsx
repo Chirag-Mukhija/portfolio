@@ -20,6 +20,11 @@ export default function Header() {
               {item.label}
             </a>
           ))}
+          {site.resume && (
+            <a href={site.resume} target="_blank" rel="noopener">
+              Résumé
+            </a>
+          )}
           <a className="btn btn-primary" href={`mailto:${site.email}`}>
             Email me <Arrow dir="ne" />
           </a>
@@ -34,6 +39,12 @@ export default function Header() {
                 <Arrow />
               </a>
             ))}
+            {site.resume && (
+              <a href={site.resume} target="_blank" rel="noopener">
+                Résumé
+                <Arrow dir="ne" />
+              </a>
+            )}
             <a href={`mailto:${site.email}`}>
               Email
               <Arrow dir="ne" />

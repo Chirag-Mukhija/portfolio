@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(site.updated),
       changeFrequency: "monthly",
       priority: 1,
-      images: [`${SITE_URL}/og.png`],
+      images: [site.portrait ? `${SITE_URL}${site.portrait}.jpg` : "", `${SITE_URL}/og.jpg`].filter(Boolean),
     },
   ];
 }

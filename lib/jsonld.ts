@@ -4,8 +4,8 @@ import { systems, problems } from "@/content/projects";
 
 export function buildJsonLd() {
   const personId = `${SITE_URL}/#person`;
-  const sameAs = [site.links.github, site.links.linkedin, site.links.leetcode].filter(
-    (url): url is string => Boolean(url)
+  const sameAs = [site.links.github, site.links.linkedin, site.links.leetcode].filter((url): url is string =>
+    Boolean(url),
   );
 
   const graph = [
@@ -16,7 +16,7 @@ export function buildJsonLd() {
       givenName: site.firstName,
       familyName: site.lastName,
       url: SITE_URL,
-      image: `${SITE_URL}/og.png`,
+      image: site.portrait ? `${SITE_URL}${site.portrait}.jpg` : `${SITE_URL}/og.jpg`,
       email: `mailto:${site.email}`,
       jobTitle: site.role,
       description: site.seo.description,
@@ -26,6 +26,9 @@ export function buildJsonLd() {
         url: site.education.schoolUrl,
         address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressCountry: "IN" },
       },
+      ...(site.resume
+        ? { subjectOf: { "@type": "DigitalDocument", name: `${site.name} — Résumé`, url: `${SITE_URL}${site.resume}` } }
+        : {}),
       homeLocation: {
         "@type": "Place",
         name: `${site.location.city}, ${site.location.region}, India`,
@@ -59,7 +62,7 @@ export function buildJsonLd() {
         "@type": "SoftwareSourceCode",
         name: "title" in p ? p.title : p.name,
         codeRepository: p.repo,
-        [("team" in p && p.team) ? "contributor" : "author"]: { "@id": personId },
+        ["team" in p && p.team ? "contributor" : "author"]: { "@id": personId },
       })),
     },
     {

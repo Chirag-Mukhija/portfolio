@@ -21,41 +21,23 @@ function Viz({ kind }: { kind: Problem["visual"] }) {
       </div>
     );
   }
-  if (kind === "pipeline") {
-    return (
-      <div className="viz viz-pipe" aria-hidden="true">
-        <div className="pipe-track">
-          <span className="pipe-line" />
-          {PIPE.map((s, i) => (
-            <span
-              key={s}
-              className={`st mono ${LLM.has(s) ? "llm" : ""} ${s === "critic" ? "pause" : ""}`}
-              style={{ left: `${(i / (PIPE.length - 1)) * 100}%` }}
-            >
-              <i />
-              <span>{s}</span>
-            </span>
-          ))}
-          <span className="mover">
-            <b className="token" />
-          </span>
-        </div>
-      </div>
-    );
-  }
   return (
-    <div className="viz viz-funnel" aria-hidden="true">
-      <div className="f">
-        <span className="bar" />
-        <span className="mono">10.3M records</span>
-      </div>
-      <div className="f">
-        <span className="bar" />
-        <span className="mono">~66 candidates / entity</span>
-      </div>
-      <div className="f">
-        <span className="bar" />
-        <span className="mono">≤ 1 match each</span>
+    <div className="viz viz-pipe" aria-hidden="true">
+      <div className="pipe-track">
+        <span className="pipe-line" />
+        {PIPE.map((s, i) => (
+          <span
+            key={s}
+            className={`st mono ${LLM.has(s) ? "llm" : ""} ${s === "critic" ? "pause" : ""}`}
+            style={{ left: `${(i / (PIPE.length - 1)) * 100}%` }}
+          >
+            <i />
+            <span>{s}</span>
+          </span>
+        ))}
+        <span className="mover">
+          <b className="token" />
+        </span>
       </div>
     </div>
   );

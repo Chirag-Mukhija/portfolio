@@ -26,8 +26,7 @@ export const systems: CaseFile[] = [
     code: "SYS—01",
     name: "Job-Scheduler",
     title: "Distributed job scheduler",
-    tagline:
-      "A task queue built from scratch — the machinery BullMQ, Sidekiq and Celery run under the hood.",
+    tagline: "A task queue built from scratch — the machinery BullMQ, Sidekiq and Celery run under the hood.",
     status: { label: "7 / 7 phases · complete", done: 7, total: 7 },
     stack: ["Node.js", "PostgreSQL", "Redis sorted sets", "Redis Pub/Sub", "WebSockets", "Docker Compose"],
     repo: "https://github.com/Chirag-Mukhija/Job-Scheduler",
@@ -50,7 +49,7 @@ export const systems: CaseFile[] = [
         title: "Shut down gracefully, don’t hope.",
         instead: "Letting the process die on SIGTERM",
         why: "The worker awaits its in-flight job before exiting, so scaling down never strands work. The API closes every WebSocket before server.close() — an open socket blocks it forever, which testing caught.",
-        cost: "Scaling down now takes as long as the slowest in-flight job — shutdown waits for it."
+        cost: "Scaling down now takes as long as the slowest in-flight job — shutdown waits for it.",
       },
     ],
     excerpt: {
@@ -173,8 +172,7 @@ export const systems: CaseFile[] = [
     code: "SYS—03",
     name: "PaytmentGateway",
     title: "Payment gateway",
-    tagline:
-      "A payment API where the hard part isn’t taking money. It’s never taking it twice.",
+    tagline: "A payment API where the hard part isn’t taking money. It’s never taking it twice.",
     status: { label: "Phase 1 of 6 · in progress", done: 1, total: 6 },
     stack: ["Node.js", "Express 5", "PostgreSQL", "raw SQL (pg)", "next: Redis + BullMQ"],
     repo: "https://github.com/Chirag-Mukhija/PaytmentGateway",
@@ -255,7 +253,7 @@ export type Problem = {
   result: { value: string; label: string }[];
   stack: string[];
   repo: string;
-  visual: "context" | "pipeline" | "funnel";
+  visual: "context" | "pipeline";
 };
 
 export const problems: Problem[] = [
@@ -300,26 +298,6 @@ export const problems: Problem[] = [
     repo: "https://github.com/Chirag-Mukhija/ShortsPipeline",
     visual: "pipeline",
   },
-  {
-    id: "entity-resolution",
-    code: "PRB—03",
-    name: "Entity resolution",
-    context: "Amazon ML Challenge 2026",
-    problem:
-      "Match 10.3 million noisy business records across three sources — typos, legal-form swaps, Hindi and Tamil transliterations, scrambled addresses — without comparing every pair.",
-    did: [
-      "Rare-key blocking: IDF-weighted name and address keys, matched with sparse top-K products per country.",
-      "A LightGBM matcher on ~70 features, including “competition” features built on each record matching at most one entity.",
-      "A transliteration dictionary learned only from training pairs, and a decision rule tuned directly for macro F0.5.",
-    ],
-    result: [
-      { value: "0.989", label: "macro F0.5 · validation, 5% sample" },
-      { value: "96.6%", label: "true pairs kept by blocking" },
-    ],
-    stack: ["Python", "LightGBM", "sparse_dot_topn", "rapidfuzz", "Parquet"],
-    repo: "https://github.com/Chirag-Mukhija/AmazonML-Pipeline",
-    visual: "funnel",
-  },
 ];
 
 export const alsoBuilt = [
@@ -331,7 +309,7 @@ export const alsoBuilt = [
   {
     name: "Wanderlust",
     note: "Full-stack rental marketplace · auth, role-based authorisation, listings CRUD. MongoDB, Express, Node.",
-    // TODO(chirag): the résumé link (Major-project-web-dev) is private or gone — add a public URL here
+    // The old repo (Major-project-web-dev) is no longer public, so this one stays unlinked.
     repo: null,
   },
 ] as const satisfies readonly { name: string; note: string; repo: string | null }[];

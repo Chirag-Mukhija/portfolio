@@ -257,7 +257,7 @@ function startMotion(libs: Libs, api: Api): () => void {
         v: end,
         duration: 1.9,
         ease: "expo.out",
-        onUpdate: () => (el.textContent = String(Math.round(o.v))),
+        onUpdate: () => (el.textContent = Math.round(o.v).toLocaleString("en-IN")),
         scrollTrigger: { trigger: el, start: "top 90%", once: true },
       });
     });
