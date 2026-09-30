@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,100..900&family=Instrument+Sans:wght@400..700&family=Martian+Mono:wdth,wght@75..112.5,300..600&display=block" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: #f1f7f7; color: #0b2233; }
+  body { position: relative; font-family: "Instrument Sans", sans-serif; }
+  .lane { position: absolute; top: 0; bottom: 0; width: 1px; background: #cfe3e6; }
+  .t { position: absolute; right: 150px; top: 0; bottom: 0; width: 62px; background: #e3eff0; }
+  .t::after { content: ""; position: absolute; left: 50%; bottom: 96px; width: 240px; height: 62px; transform: translateX(-50%); background: #e3eff0; }
+  .flags { position: absolute; left: 30px; right: 30px; top: 34px; display: flex; justify-content: space-between; }
+  .flags::before { content: ""; position: absolute; left: -30px; right: -30px; top: 0; height: 1px; background: #0b2233; opacity: .55; }
+  .flags i { width: 14px; height: 19px; clip-path: polygon(0 0, 100% 0, 50% 100%); background: #0b2233; }
+  .flags i:nth-child(3n+2) { background: #ff5a3c; } .flags i:nth-child(3n+3) { background: #fff; }
+  .mono { font-family: "Martian Mono", monospace; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; font-variation-settings: "wdth" 90; }
+  .eyebrow { position: absolute; left: 60px; top: 112px; display: flex; gap: 28px; color: #557083; }
+  .eyebrow b { color: #0b2233; font-weight: 600; }
+  h1 { position: absolute; left: 54px; top: 158px; font-family: "Anybody", sans-serif; font-weight: 850; font-size: 158px; line-height: .8; letter-spacing: -.035em; text-transform: uppercase; font-variation-settings: "wdth" 116; }
+  h1 span { display: block; } h1 em { font-style: normal; color: #ff5a3c; }
+  .foot { position: absolute; left: 60px; right: 60px; bottom: 44px; display: flex; justify-content: space-between; align-items: end; border-top: 1px solid #cfe3e6; padding-top: 22px; }
+  .role { font-size: 30px; font-weight: 600; letter-spacing: -.01em; }
+  .dot::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 12px; border-radius: 50%; background: #ff5a3c; vertical-align: 1px; }
+</style>
+</head>
+<body>
+  <div class="t"></div>
+  <div class="lane" style="left:30px"></div><div class="lane" style="right:30px"></div>
+  <div class="flags"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <p class="eyebrow mono"><b>Lane 04</b><span>Bengaluru, India</span><span>BMSCE · CSE ’28</span></p>
+  <h1><span>Chirag</span><span>Mukhija</span></h1>
+  <div class="foot">
+    <p class="role">Backend &amp; Systems Engineer</p>
+    <p class="mono dot">Job schedulers · feeds · payments</p>
+  </div>
+</body>
+</html>
